@@ -31,6 +31,7 @@ export default function CheckoutForm({ onClose, onBack }) {
         ...formData,
         cart: cart,
         total: subtotal,
+        deliveryCharge: deliveryCharge,
       });
       setShowConfirmation(true);
       dispatch({ type: 'CLEAR_CART' });

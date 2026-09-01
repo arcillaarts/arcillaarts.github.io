@@ -33,11 +33,8 @@ const HeroBanner = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.h1 className={styles.title} variants={itemVariants}>
-          Arcilla Arts
-        </motion.h1>
-        <motion.div className={styles.subtitle} variants={itemVariants}>
-          by Bidisha
+        <motion.div variants={itemVariants}>
+          <img src="./logo.png" alt="Arcilla Arts Logo" className={styles.heroLogo} />
         </motion.div>
         <motion.p className={styles.tagline} variants={itemVariants}>
           Handcrafted Jewellery, Made with Love

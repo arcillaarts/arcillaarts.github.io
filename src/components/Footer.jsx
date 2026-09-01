@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="row g-4">
           {/* Column 1: Brand */}
           <div className="col-12 col-md-6 col-lg-3">
-            <h3 className={styles.heading}>Arcilla Arts</h3>
+            <img src="./logo.png" alt="Arcilla Arts Logo" style={{ height: '60px', marginBottom: '1rem' }} />
             <p className={styles.text}>
               Handcrafted jewellery made with love by Bidisha. Every piece is unique and tells a story.
             </p>

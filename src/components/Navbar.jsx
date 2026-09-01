@@ -49,11 +49,9 @@ const Navbar = ({ onOpenCart }) => {
           {isMobileMenuOpen ? <FaXmark size={24} /> : <FaBars size={24} />}
         </button>
 
-        {/* Logo */}
         <div className={styles.logoArea}>
           <NavLink to="/" className={styles.logoLink} onClick={closeMobileMenu}>
-            <div className={styles.brandName}>Arcilla Arts</div>
-            <div className={styles.tagline}>by Bidisha</div>
+            <img src="./logo.png" alt="Arcilla Arts Logo" className={styles.logoImage} />
           </NavLink>
         </div>
 

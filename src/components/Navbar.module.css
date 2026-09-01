@@ -42,18 +42,10 @@
   align-items: center;
 }
 
-.brandName {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: var(--color-dark);
-  font-weight: 700;
-}
-
-.tagline {
-  font-size: 0.75rem;
-  color: var(--color-clay);
-  font-style: italic;
-  font-family: 'Playfair Display', serif;
+.logoImage {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav {

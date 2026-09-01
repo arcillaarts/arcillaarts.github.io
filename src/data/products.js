@@ -47,13 +47,37 @@ const determineCategory = (name) => {
   return 'Pendants';
 };
 
-const products = rawData.map(item => ({
-  ...item,
-  category: determineCategory(item.name),
-  description: `Beautifully handcrafted ${item.name} perfect for any occasion. Made by skilled artisans with attention to detail.`,
-  image: `url('./products/${item.id}.jpg') center/cover no-repeat`,
-  tags: ['handmade', item.name.toLowerCase().includes('clay') ? 'clay' : 'terracotta'],
-  featured: [1, 2, 3, 14, 19, 26, 30].includes(item.id)
-}));
+const products = rawData.map(item => {
+  const lowerName = item.name.toLowerCase();
+  
+  // Colors
+  const colorKeywords = ['pink', 'blue', 'seagreen', 'green', 'red', 'grey', 'yellow', 'black'];
+  const colors = colorKeywords.filter(color => lowerName.includes(color));
+  
+  // Materials
+  const materialKeywords = ['clay', 'fabric', 'bamboo', 'terracotta'];
+  const materials = materialKeywords.filter(mat => lowerName.includes(mat));
+  
+  // Types
+  const typeKeywords = ['locket', 'earring', 'pendant', 'set'];
+  const types = typeKeywords.filter(type => lowerName.includes(type));
+  if (lowerName.includes('locket & earring')) types.push('set');
+
+  // Base Tags
+  const baseTags = ['handmade', 'jewelry'];
+  
+  // Combine all
+  const rawTags = [...baseTags, ...colors, ...materials, ...types];
+  const uniqueTags = [...new Set(rawTags)];
+
+  return {
+    ...item,
+    category: determineCategory(item.name),
+    description: `Beautifully handcrafted ${item.name} perfect for any occasion. Made by skilled artisans with attention to detail.`,
+    image: `url('./products/${item.id}.jpg') center/cover no-repeat`,
+    tags: uniqueTags,
+    featured: [1, 2, 3, 14, 19, 26, 30].includes(item.id)
+  };
+});
 
 export default products;

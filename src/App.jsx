@@ -7,6 +7,7 @@ import { CartProvider } from './context/CartContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CartDrawer from './components/CartDrawer'
+import TagCloud from './components/TagCloud'
 
 // Pages
 import Home from './pages/Home'
@@ -45,6 +46,7 @@ function AppContent() {
           </Routes>
         </AnimatePresence>
       </main>
+      <TagCloud />
       <Footer />
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>

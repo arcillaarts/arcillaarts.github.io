@@ -1,16 +1,47 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
 import { categories } from '../data/products';
 import ProductCard from './ProductCard';
 import styles from './ProductGrid.module.css';
 
 export default function ProductGrid({ products, showFilters = true }) {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [sortBy, setSortBy] = useState('default');
+  
+  const activeCategory = searchParams.get('category') || 'All';
+  const activeTag = searchParams.get('tag') || null;
+  const searchQuery = searchParams.get('search') || '';
+
+  const handleCategoryClick = (category) => {
+    if (category === 'All') {
+      searchParams.delete('category');
+    } else {
+      searchParams.set('category', category);
+    }
+    setSearchParams(searchParams);
+  };
 
   const filteredProducts = products.filter((product) => {
-    if (activeCategory === 'All') return true;
-    return product.category === activeCategory;
+    // Search query filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      if (!product.name.toLowerCase().includes(query) && !product.tags.some(tag => tag.toLowerCase().includes(query))) {
+        return false;
+      }
+    }
+    
+    // Tag filter
+    if (activeTag && !product.tags.includes(activeTag)) {
+      return false;
+    }
+    
+    // Category filter
+    if (activeCategory !== 'All' && product.category !== activeCategory) {
+      return false;
+    }
+    
+    return true;
   });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
@@ -27,7 +58,7 @@ export default function ProductGrid({ products, showFilters = true }) {
             <button
               key={category}
               className={`${styles.filterPill} ${activeCategory === category ? styles.activePill : ''}`}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => handleCategoryClick(category)}
             >
               {category}
             </button>
@@ -41,6 +72,23 @@ export default function ProductGrid({ products, showFilters = true }) {
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
           </select>
+        </div>
+      )}
+
+      {showFilters && (searchQuery || activeTag) && (
+        <div className={styles.activeFilters}>
+          {searchQuery && (
+            <span className={styles.activeFilterBadge}>
+              Search: {searchQuery}
+              <button onClick={() => { searchParams.delete('search'); setSearchParams(searchParams); }}>×</button>
+            </span>
+          )}
+          {activeTag && (
+            <span className={styles.activeFilterBadge}>
+              Tag: {activeTag}
+              <button onClick={() => { searchParams.delete('tag'); setSearchParams(searchParams); }}>×</button>
+            </span>
+          )}
         </div>
       )}
 

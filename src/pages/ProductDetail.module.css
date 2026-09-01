@@ -128,12 +128,6 @@
   color: var(--color-dark);
 }
 
-.relatedGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
 @media (max-width: 768px) {
   .productLayout {
     grid-template-columns: 1fr;
@@ -142,10 +136,5 @@
 
   .name {
     font-size: 2rem;
-  }
-
-  .relatedGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
   }
 }

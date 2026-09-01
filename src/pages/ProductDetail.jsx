@@ -86,7 +86,7 @@ const ProductDetail = () => {
 
       <div className={styles.relatedSection}>
         <h2 className={styles.relatedTitle}>You May Also Like</h2>
-        <div className={styles.relatedGrid}>
+        <div className="row g-4">
           {relatedProducts.map(p => (
             <ProductCard key={p.id} product={p} />
           ))}

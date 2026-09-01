@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaBars, FaXmark, FaCartShopping } from 'react-icons/fa6';
+import { FaSearch } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import SocialFollow from './SocialFollow';
 import styles from './Navbar.module.css';
@@ -9,6 +10,10 @@ const Navbar = ({ onOpenCart }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { cartCount } = useCart();
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +26,15 @@ const Navbar = ({ onOpenCart }) => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
   };
 
   return (
@@ -58,6 +72,13 @@ const Navbar = ({ onOpenCart }) => {
           </div>
           <button 
             className={styles.cartButton} 
+            onClick={() => setIsSearchOpen(!isSearchOpen)}
+            aria-label="Search"
+          >
+            <FaSearch size={20} />
+          </button>
+          <button 
+            className={styles.cartButton} 
             onClick={onOpenCart}
             aria-label="Open cart"
           >
@@ -68,6 +89,24 @@ const Navbar = ({ onOpenCart }) => {
           </button>
         </div>
       </div>
+      
+      {/* Search Overlay */}
+      {isSearchOpen && (
+        <div className={styles.searchOverlay}>
+          <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+            <input 
+              type="text" 
+              placeholder="Search for products, colors, materials..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.searchInput}
+              autoFocus
+            />
+            <button type="submit" className={styles.searchSubmit}><FaSearch /></button>
+            <button type="button" className={styles.searchClose} onClick={() => setIsSearchOpen(false)}><FaXmark /></button>
+          </form>
+        </div>
+      )}
     </header>
   );
 };

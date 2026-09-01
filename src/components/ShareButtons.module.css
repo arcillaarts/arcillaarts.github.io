@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.button {
+  background: var(--color-cream);
+  border: 1px solid var(--color-sand);
+  color: var(--color-dark);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.button:hover {
+  background: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  color: white;
+  transform: translateY(-2px);
+}

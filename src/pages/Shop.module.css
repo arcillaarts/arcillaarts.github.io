@@ -1,0 +1,41 @@
+.page {
+  padding: 4rem 0;
+  min-height: 100vh;
+  background-color: var(--color-cream);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: var(--color-clay);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 2rem 0;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+}

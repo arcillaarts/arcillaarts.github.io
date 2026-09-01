@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <g transform="translate(10, 10)">
+    <path d="M 20 40 L 40 0 L 60 40" fill="none" stroke="#B65F45" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 25 30 L 55 30" fill="none" stroke="#3E2A23" stroke-width="4" stroke-linecap="round" />
+    <circle cx="40" cy="15" r="5" fill="#3E2A23" />
+    <text x="75" y="32" font-family="'Playfair Display', serif" font-size="28" font-weight="600" fill="#3E2A23">Arcilla Arts</text>
+  </g>
+</svg>

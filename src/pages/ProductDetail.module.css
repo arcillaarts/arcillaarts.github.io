@@ -1,0 +1,151 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.notFound {
+  text-align: center;
+  padding: 8rem 1rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--color-dark);
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.imageWrapper {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.category {
+  display: inline-block;
+  background: var(--color-clay);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-dark);
+}
+
+.price {
+  font-size: 1.75rem;
+  color: var(--color-terracotta);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  line-height: 1.7;
+  color: var(--color-clay);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  padding: 0.35rem 0.85rem;
+  background: var(--color-sand);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--color-dark);
+}
+
+.deliveryInfo {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--color-sand);
+}
+
+.deliveryOption {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--color-dark);
+}
+
+.deliveryOption:not(:last-child) {
+  border-bottom: 1px solid var(--color-sand);
+  margin-bottom: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.addToCartBtn {
+  width: 100%;
+  padding: 1.25rem;
+  background: var(--color-terracotta);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.addToCartBtn:hover {
+  background: var(--color-clay);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(182, 95, 69, 0.3);
+}
+
+.relatedSection {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-sand);
+}
+
+.relatedTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-dark);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .productLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}

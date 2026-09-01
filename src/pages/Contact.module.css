@@ -1,0 +1,171 @@
+.page {
+  padding: 4rem 0;
+  min-height: 100vh;
+  background-color: var(--color-cream);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: var(--color-clay);
+  font-size: 1.2rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 4rem;
+}
+
+.formContainer {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--color-sand);
+  border-radius: 8px;
+  background: var(--color-cream);
+  font-family: 'Inter', sans-serif;
+  color: var(--color-dark);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--color-terracotta);
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-terracotta);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submitBtn:hover {
+  background: var(--color-clay);
+  transform: translateY(-2px);
+}
+
+.infoCard,
+.socialCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.infoCard h3,
+.socialCard h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: var(--color-dark);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-sand);
+  padding-bottom: 0.5rem;
+}
+
+.infoItem {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoItem strong {
+  color: var(--color-clay);
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoItem a,
+.infoItem span {
+  color: var(--color-dark);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.infoItem a:hover {
+  color: var(--color-terracotta);
+}
+
+.whatsappBtn {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  margin-top: 2rem;
+  transition: all 0.3s;
+}
+
+.whatsappBtn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .formContainer {
+    padding: 1.5rem;
+  }
+  
+  .infoCard,
+  .socialCard {
+    padding: 1.5rem;
+  }
+}

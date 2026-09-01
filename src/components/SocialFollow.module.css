@@ -1,0 +1,28 @@
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.light .iconLink {
+  color: var(--color-dark);
+}
+
+.light .iconLink:hover {
+  color: var(--color-terracotta);
+}
+
+.dark .iconLink {
+  color: var(--color-sand);
+}
+
+.dark .iconLink:hover {
+  color: var(--color-terracotta);
+}

@@ -45,7 +45,7 @@ export default function ProductGrid({ products, showFilters = true }) {
       )}
 
       <motion.div
-        className={styles.grid}
+        className="row g-4"
         initial="hidden"
         animate="visible"
         variants={{

@@ -5,17 +5,18 @@ import styles from './Footer.module.css';
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className={styles.grid}>
-        {/* Column 1: Brand */}
-        <div>
-          <h3 className={styles.heading}>Arcilla Arts</h3>
-          <p className={styles.text}>
-            Handcrafted jewellery made with love by Bidisha. Every piece is unique and tells a story.
-          </p>
-        </div>
+      <div className="container">
+        <div className="row g-4">
+          {/* Column 1: Brand */}
+          <div className="col-12 col-md-6 col-lg-3">
+            <h3 className={styles.heading}>Arcilla Arts</h3>
+            <p className={styles.text}>
+              Handcrafted jewellery made with love by Bidisha. Every piece is unique and tells a story.
+            </p>
+          </div>
 
-        {/* Column 2: Quick Links */}
-        <div>
+          {/* Column 2: Quick Links */}
+          <div className="col-12 col-sm-6 col-md-6 col-lg-3">
           <h3 className={styles.heading}>Quick Links</h3>
           <nav className={styles.nav}>
             <NavLink to="/" className={styles.link}>Home</NavLink>
@@ -26,7 +27,7 @@ const Footer = () => {
         </div>
 
         {/* Column 3: Categories */}
-        <div>
+        <div className="col-12 col-sm-6 col-md-6 col-lg-3">
           <h3 className={styles.heading}>Categories</h3>
           <nav className={styles.nav}>
             <NavLink to="/shop?category=Earrings" className={styles.link}>Earrings</NavLink>
@@ -38,7 +39,7 @@ const Footer = () => {
         </div>
 
         {/* Column 4: Connect */}
-        <div>
+        <div className="col-12 col-md-6 col-lg-3">
           <h3 className={styles.heading}>Connect</h3>
           <SocialFollow variant="dark" />
           <p className={styles.text} style={{ marginTop: '1rem' }}>
@@ -46,6 +47,7 @@ const Footer = () => {
               info.arcillaarts@gmail.com
             </a>
           </p>
+        </div>
         </div>
       </div>
 

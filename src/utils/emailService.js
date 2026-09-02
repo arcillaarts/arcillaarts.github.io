@@ -9,7 +9,7 @@ if (PUBLIC_KEY) {
   emailjs.init(PUBLIC_KEY);
 }
 
-export const sendOrderEmail = async ({ name, email, phone, cart, total, deliveryCharge = 0 }) => {
+export const sendOrderEmail = async ({ name, email, phone, cart, total, deliveryCharge = 0, utr }) => {
   const grandTotal = total + deliveryCharge;
 
   const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
@@ -26,6 +26,7 @@ export const sendOrderEmail = async ({ name, email, phone, cart, total, delivery
     order_total: `₹${grandTotal}`,
     order_date: new Date().toLocaleString(),
     order_id: orderId,
+    utr_number: utr,
   };
 
   try {

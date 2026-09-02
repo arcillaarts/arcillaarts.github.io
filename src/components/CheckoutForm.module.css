@@ -1,4 +1,4 @@
-﻿.form { padding: 0 0.5rem; overflow-y: auto; flex: 1; }
+.form { padding: 0 0.5rem; overflow-y: auto; flex: 1; }
 .backBtn { background: none; border: none; color: var(--color-clay); cursor: pointer; margin-bottom: 1rem; font-size: 0.9rem; }
 .heading { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 1rem; }
 .field { margin-bottom: 1rem; }
@@ -12,7 +12,24 @@
 .summaryItem { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.35rem 0; }
 .deliveryOptions { margin: 1rem 0; }
 .radioLabel { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; cursor: pointer; font-size: 0.9rem; }
-.grandTotal { display: flex; justify-content: space-between; font-weight: 600; font-size: 1.05rem; padding-top: 0.5rem; border-top: 1px solid var(--color-sand); margin-top: 0.5rem; }
+.grandTotal {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-dark);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-dark);
+}
+
+.paymentContainer {
+  padding: 1rem;
+  background: #fdfbf7;
+  border-radius: 8px;
+  border: 1px solid var(--color-sand);
+  margin-top: 0.5rem;
+}
 .submitBtn { width: 100%; padding: 0.875rem; background: var(--color-terracotta); color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s; margin-top: 1rem; margin-bottom: 2rem; }
 .submitBtn:hover { background: var(--color-clay); }
 .submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }

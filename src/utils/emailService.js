@@ -20,6 +20,7 @@ export const sendOrderEmail = async ({ name, email, phone, cart, total, delivery
   const templateParams = {
     customer_name: name,
     customer_email: email,
+    customer_phone: phone,
     items_list: itemsText,
     items_html: `<ul>${itemsHtml}</ul>`,
     order_total: `₹${grandTotal}`,
@@ -32,6 +33,31 @@ export const sendOrderEmail = async ({ name, email, phone, cart, total, delivery
     return response;
   } catch (error) {
     console.error('EmailJS Error:', error);
+    throw error;
+  }
+};
+
+export const sendContactEmail = async ({ name, email, phone, message }) => {
+  const CONTACT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
+  
+  if (!CONTACT_TEMPLATE_ID) {
+    console.error("VITE_EMAILJS_CONTACT_TEMPLATE_ID is missing in .env");
+    throw new Error("Contact template ID is missing");
+  }
+
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    from_phone: phone,
+    message: message,
+    to_email: 'info.arcillaarts@gmail.com'
+  };
+
+  try {
+    const response = await emailjs.send(SERVICE_ID, CONTACT_TEMPLATE_ID, templateParams);
+    return response;
+  } catch (error) {
+    console.error('EmailJS Contact Error:', error);
     throw error;
   }
 };

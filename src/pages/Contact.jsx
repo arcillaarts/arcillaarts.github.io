@@ -2,30 +2,39 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import SocialFollow from '../components/SocialFollow';
+import { sendContactEmail } from '../utils/emailService';
 import styles from './Contact.module.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       toast.error('Please fill all fields');
       return;
     }
-    // Simulate send
-    setTimeout(() => {
+    
+    setIsSubmitting(true);
+    try {
+      await sendContactEmail(formData);
       toast.success("Message sent! We'll get back to you soon.");
-      setFormData({ name: '', email: '', message: '' });
-    }, 500);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (error) {
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -68,6 +77,17 @@ const Contact = () => {
                 />
               </div>
               <div className={styles.formGroup}>
+                <label htmlFor="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+91"
+                />
+              </div>
+              <div className={styles.formGroup}>
                 <label htmlFor="message">Message</label>
                 <textarea
                   id="message"
@@ -78,8 +98,8 @@ const Contact = () => {
                   rows="5"
                 ></textarea>
               </div>
-              <button type="submit" className={styles.submitBtn}>
-                Send Message
+              <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

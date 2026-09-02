@@ -12,14 +12,19 @@ if (PUBLIC_KEY) {
 export const sendOrderEmail = async ({ name, email, phone, cart, total, deliveryCharge = 0 }) => {
   const grandTotal = total + deliveryCharge;
 
-  let itemsText = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+  const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+
+  let itemsText = cart.map(item => `${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}`).join('\n');
+  let itemsHtml = cart.map(item => `<li>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</li>`).join('');
 
   const templateParams = {
     customer_name: name,
     customer_email: email,
     items_list: itemsText,
+    items_html: `<ul>${itemsHtml}</ul>`,
     order_total: `₹${grandTotal}`,
     order_date: new Date().toLocaleString(),
+    order_id: orderId,
   };
 
   try {

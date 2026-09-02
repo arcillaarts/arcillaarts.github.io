@@ -7,7 +7,7 @@ const SocialFollow = ({ variant = 'light' }) => {
       <a href="#" className={styles.iconLink} aria-label="Facebook">
         <FaFacebook size={20} />
       </a>
-      <a href="#" className={styles.iconLink} aria-label="Instagram">
+      <a href="https://www.instagram.com/arcilla__arts_by_bidisha/" target="_blank" rel="noopener noreferrer" className={styles.iconLink} aria-label="Instagram">
         <FaInstagram size={20} />
       </a>
       <a href="#" className={styles.iconLink} aria-label="WhatsApp">

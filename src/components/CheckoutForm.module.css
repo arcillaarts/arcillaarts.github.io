@@ -1,6 +1,6 @@
-.form { padding: 0 0.5rem; overflow-y: auto; flex: 1; }
+﻿.form { padding: 0 0.5rem; overflow-y: auto; flex: 1; }
 .backBtn { background: none; border: none; color: var(--color-clay); cursor: pointer; margin-bottom: 1rem; font-size: 0.9rem; }
-.heading { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+.heading { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 1rem; }
 .field { margin-bottom: 1rem; }
 .label { display: block; font-size: 0.85rem; margin-bottom: 0.25rem; color: var(--color-clay); font-weight: 500; }
 .input { width: 100%; padding: 0.625rem; border: 1px solid var(--color-sand); border-radius: 6px; font-size: 0.95rem; background: white; transition: border-color 0.3s; box-sizing: border-box; }

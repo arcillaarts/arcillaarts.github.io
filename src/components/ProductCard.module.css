@@ -1,4 +1,4 @@
-.card {
+﻿.card {
   background: var(--color-cream);
   border-radius: 12px;
   overflow: hidden;
@@ -39,7 +39,7 @@
 }
 
 .name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', serif;
   font-size: 1rem;
   margin-bottom: 0.25rem;
   color: var(--color-dark);

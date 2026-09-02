@@ -4,17 +4,8 @@ import styles from './SocialFollow.module.css';
 const SocialFollow = ({ variant = 'light' }) => {
   return (
     <div className={`${styles.socialLinks} ${styles[variant]}`}>
-      <a href="#" className={styles.iconLink} aria-label="Facebook">
-        <FaFacebook size={20} />
-      </a>
-      <a href="https://www.instagram.com/arcilla__arts_by_bidisha/" target="_blank" rel="noopener noreferrer" className={styles.iconLink} aria-label="Instagram">
+      <a href="https://www.instagram.com/arcilla__arts_by_bidisha?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.iconLink} aria-label="Instagram">
         <FaInstagram size={20} />
-      </a>
-      <a href="#" className={styles.iconLink} aria-label="WhatsApp">
-        <FaWhatsapp size={20} />
-      </a>
-      <a href="#" className={styles.iconLink} aria-label="X">
-        <FaXTwitter size={20} />
       </a>
     </div>
   );

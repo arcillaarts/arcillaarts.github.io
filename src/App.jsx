@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CartDrawer from './components/CartDrawer'
 import TagCloud from './components/TagCloud'
+import SocialFollow from './components/SocialFollow'
 
 // Pages
 import Home from './pages/Home'
@@ -49,6 +50,7 @@ function AppContent() {
       <TagCloud />
       <Footer />
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <SocialFollow variant="floating" />
     </div>
   )
 }

@@ -95,10 +95,6 @@
   gap: 1.5rem;
 }
 
-.socialDesktop {
-  display: flex;
-}
-
 .cartButton {
   background: none;
   border: none;
@@ -136,10 +132,6 @@
 @media (max-width: 768px) {
   .mobileToggle {
     display: block;
-  }
-  
-  .socialDesktop {
-    display: none;
   }
 
   .nav {

@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaBars, FaXmark, FaCartShopping } from 'react-icons/fa6';
 import { FaSearch } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
-import SocialFollow from './SocialFollow';
 import styles from './Navbar.module.css';
 
 const Navbar = ({ onOpenCart }) => {
@@ -65,9 +64,6 @@ const Navbar = ({ onOpenCart }) => {
 
         {/* Right Actions */}
         <div className={styles.actions}>
-          <div className={styles.socialDesktop}>
-            <SocialFollow variant="light" />
-          </div>
           <button 
             className={styles.cartButton} 
             onClick={() => setIsSearchOpen(!isSearchOpen)}

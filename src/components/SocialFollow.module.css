@@ -1,4 +1,4 @@
-﻿.socialLinks {
+.socialLinks {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -25,4 +25,27 @@
 
 .dark .iconLink:hover {
   color: var(--color-terracotta);
+}
+
+.floating {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 100;
+  background-color: var(--color-cream);
+  padding: 1.5rem 1rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(62, 42, 35, 0.15);
+}
+
+.floating .iconLink {
+  color: var(--color-terracotta);
+}
+
+.floating .iconLink:hover {
+  color: var(--color-clay);
+  transform: scale(1.1);
 }

@@ -39,52 +39,54 @@ const HeroBanner = () => {
 
   return (
     <section className={styles.hero}>
-      {/* Left Video */}
-      <div className={styles.leftMedia}>
-        <video 
-          src="/cover/Cover1.mp4" 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className={styles.mediaElement}
-        />
-      </div>
-
-      {/* Right Slideshow */}
-      <div className={styles.rightMedia}>
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentImage}
-            src={rightImages[currentImage]}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+      <div className={styles.heroContainer}>
+        {/* Left Video */}
+        <div className={styles.leftMedia}>
+          <video 
+            src="/cover/Cover1.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className={styles.mediaElement}
-            alt="Showcase"
           />
-        </AnimatePresence>
-      </div>
+        </div>
 
-      <motion.div 
-        className={styles.content}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div variants={itemVariants}>
-          <img src="/logo.png" alt="Arcilla Arts Logo" className={styles.heroLogo} />
+        <motion.div 
+          className={styles.content}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <img src="/logo.png" alt="Arcilla Arts Logo" className={styles.heroLogo} />
+          </motion.div>
+          <motion.p className={styles.tagline} variants={itemVariants}>
+            Handcrafted Jewellery, Made with Love
+          </motion.p>
+          <motion.div variants={itemVariants}>
+            <NavLink to="/shop" className={styles.ctaButton}>
+              Shop Now
+            </NavLink>
+          </motion.div>
         </motion.div>
-        <motion.p className={styles.tagline} variants={itemVariants}>
-          Handcrafted Jewellery, Made with Love
-        </motion.p>
-        <motion.div variants={itemVariants}>
-          <NavLink to="/shop" className={styles.ctaButton}>
-            Shop Now
-          </NavLink>
-        </motion.div>
-      </motion.div>
+
+        {/* Right Slideshow */}
+        <div className={styles.rightMedia}>
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentImage}
+              src={rightImages[currentImage]}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className={styles.mediaElement}
+              alt="Showcase"
+            />
+          </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 };

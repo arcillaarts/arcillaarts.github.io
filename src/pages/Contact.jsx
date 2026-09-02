@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import SocialFollow from '../components/SocialFollow';
+import SEO from '../components/SEO';
 import { sendContactEmail } from '../utils/emailService';
 import styles from './Contact.module.css';
 
@@ -45,6 +46,10 @@ const Contact = () => {
       transition={{ duration: 0.3 }}
       className={styles.page}
     >
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with Arcilla Arts. We'd love to hear from you regarding custom orders, queries, or just to say hello!"
+      />
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>Get in Touch</h1>

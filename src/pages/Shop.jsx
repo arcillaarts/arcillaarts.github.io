@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProductGrid from '../components/ProductGrid';
+import SEO from '../components/SEO';
 import products from '../data/products';
 import styles from './Shop.module.css';
 
@@ -13,6 +14,10 @@ const Shop = () => {
       transition={{ duration: 0.3 }}
       className={styles.page}
     >
+      <SEO 
+        title="Shop" 
+        description="Browse our complete collection of handmade jewellery including necklaces, earrings, and traditional sets."
+      />
       <div className={styles.header}>
         <h1 className={styles.title}>Our Collection</h1>
         <p className={styles.subtitle}>

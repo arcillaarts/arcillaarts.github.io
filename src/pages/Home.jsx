@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import HeroBanner from '../components/HeroBanner';
 import ProductGrid from '../components/ProductGrid';
+import SEO from '../components/SEO';
 import products from '../data/products';
 import styles from './Home.module.css';
 
@@ -56,6 +57,10 @@ const Home = () => {
       transition={{ duration: 0.3 }}
       className={styles.page}
     >
+      <SEO 
+        title="Home" 
+        description="Discover beautiful, handcrafted terracotta and ethnic jewellery by Arcilla Arts."
+      />
       <HeroBanner />
       
       <section className={styles.section}>

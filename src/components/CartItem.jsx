@@ -17,7 +17,7 @@ export default function CartItem({ item }) {
 
   return (
     <div className={styles.item}>
-      <div className={styles.image} style={{ background: item.image }}></div>
+      <img src={`./products/${item.id}.jpg`} alt={item.name} className={styles.image} />
       <div className={styles.details}>
         <div className={styles.name}>{item.name}</div>
         <div className={styles.price}>₹{item.price.toLocaleString('en-IN')}</div>

@@ -7,6 +7,7 @@ import { deliveryOptions } from '../data/products';
 import { useCart } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
 import ShareButtons from '../components/ShareButtons';
+import SEO from '../components/SEO';
 import styles from './ProductDetail.module.css';
 
 const ProductDetail = () => {
@@ -46,12 +47,19 @@ const ProductDetail = () => {
       transition={{ duration: 0.3 }}
       className={styles.page}
     >
+      <SEO 
+        title={product.name} 
+        description={product.description}
+        image={`https://arcillaarts.github.io/products/${product.id}.jpg`}
+        keywords={`${product.name}, handmade jewellery, ${product.category}, ${product.tags.join(', ')}`}
+      />
       <div className={styles.productLayout}>
-        <div 
-          className={styles.imageWrapper}
-          style={{ background: product.image }}
-        >
-          {/* Using placeholder background */}
+        <div className={styles.imageWrapper}>
+          <img 
+            src={`./products/${product.id}.jpg`} 
+            alt={`${product.name} - Arcilla Arts Handmade`}
+            className={styles.detailImage}
+          />
         </div>
 
         <div>

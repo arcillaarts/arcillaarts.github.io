@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import styles from './About.module.css';
 
 const About = () => {
@@ -11,6 +12,10 @@ const About = () => {
       transition={{ duration: 0.3 }}
       className={styles.page}
     >
+      <SEO 
+        title="About Us" 
+        description="Learn about the story of Arcilla Arts, founded by Bidisha. Discover our passion for handcrafted traditional and contemporary jewellery."
+      />
       <div className={styles.container}>
         <h1 className={styles.title}>About Arcilla Arts</h1>
         

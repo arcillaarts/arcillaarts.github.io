@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
 
 // Layout
@@ -57,11 +58,13 @@ function AppContent() {
 
 function App() {
   return (
-    <CartProvider>
-      <HashRouter>
-        <AppContent />
-      </HashRouter>
-    </CartProvider>
+    <HelmetProvider>
+      <CartProvider>
+        <HashRouter>
+          <AppContent />
+        </HashRouter>
+      </CartProvider>
+    </HelmetProvider>
   )
 }
 

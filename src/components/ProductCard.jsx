@@ -34,7 +34,12 @@ export default function ProductCard({ product }) {
         animate={{ opacity: 1, y: 0 }}
       >
         <div className={styles.imageWrapper}>
-          <div className={styles.image} style={{ background: product.image }}></div>
+          <img 
+            src={`./products/${product.id}.jpg`} 
+            alt={`${product.name} - Handmade Jewellery by Arcilla Arts`} 
+            className={styles.image}
+            loading="lazy"
+          />
           <span className={styles.badge}>{product.category}</span>
         </div>
         <div className={styles.content}>

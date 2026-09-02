@@ -20,8 +20,8 @@
 }
 
 .leftMedia, .rightMedia {
-  width: 350px;
-  height: 240px;
+  width: 420px;
+  height: 320px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(62, 42, 35, 0.15);
@@ -97,8 +97,8 @@
     flex-direction: column;
   }
   .leftMedia, .rightMedia {
-    width: 300px;
-    height: 200px;
+    width: 380px;
+    height: 280px;
   }
 }
 

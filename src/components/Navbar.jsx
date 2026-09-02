@@ -51,7 +51,7 @@ const Navbar = ({ onOpenCart }) => {
 
         <div className={styles.logoArea}>
           <NavLink to="/" className={styles.logoLink} onClick={closeMobileMenu}>
-            <img src="./logo.png" alt="Arcilla Arts Logo" className={styles.logoImage} />
+            <img src="/header-logo.png" alt="Arcilla Arts Header Logo" className={styles.logoImage} />
           </NavLink>
         </div>
 

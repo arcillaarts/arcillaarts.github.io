@@ -8,11 +8,10 @@ import products from '../data/products';
 import styles from './Home.module.css';
 
 const categories = [
+  { name: 'Sets', color: 'linear-gradient(135deg, #E6D5C3, #B65F45)' },
+  { name: 'Pendants', color: 'linear-gradient(135deg, #F3E9DD, #8A5140)' },
   { name: 'Earrings', color: 'linear-gradient(135deg, #F5EFE5, #D8C2A5)' },
-  { name: 'Necklaces', color: 'linear-gradient(135deg, #E6D5C3, #B65F45)' },
-  { name: 'Bracelets', color: 'linear-gradient(135deg, #F3E9DD, #8A5140)' },
-  { name: 'Rings', color: 'linear-gradient(135deg, #EAD7C6, #D8C2A5)' },
-  { name: 'Anklets', color: 'linear-gradient(135deg, #E5D5CB, #B65F45)' }
+  { name: 'Fabric', color: 'linear-gradient(135deg, #EAD7C6, #D8C2A5)' }
 ];
 
 const features = [

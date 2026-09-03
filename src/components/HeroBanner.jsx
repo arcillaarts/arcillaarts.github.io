@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styles from './HeroBanner.module.css';
 
 const rightImages = [
@@ -13,6 +14,7 @@ const rightImages = [
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const timerRef = useRef(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -21,13 +23,42 @@ const HeroBanner = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    const totalSlides = isMobile ? rightImages.length + 2 : rightImages.length; // +2 for logo and video on mobile
-    const timer = setInterval(() => {
+  const totalMobileSlides = rightImages.length + 2;
+
+  const startAutoPlay = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    const totalSlides = isMobile ? totalMobileSlides : rightImages.length;
+    timerRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 4000); 
-    return () => clearInterval(timer);
-  }, [isMobile]);
+    }, 4000);
+  }, [isMobile, totalMobileSlides]);
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [startAutoPlay]);
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    if (isMobile) {
+      setCurrentSlide(prev => (prev === 0 ? totalMobileSlides - 1 : prev - 1));
+    } else {
+      setCurrentSlide(prev => (prev === 0 ? rightImages.length - 1 : prev - 1));
+    }
+    startAutoPlay(); // Reset timer
+  };
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    if (isMobile) {
+      setCurrentSlide(prev => (prev + 1) % totalMobileSlides);
+    } else {
+      setCurrentSlide(prev => (prev + 1) % rightImages.length);
+    }
+    startAutoPlay(); // Reset timer
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -40,13 +71,18 @@ const HeroBanner = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
-  // On desktop, the right slideshow uses the currentSlide directly (modulo length)
   const desktopImageIndex = currentSlide % rightImages.length;
 
   return (
     <section className={styles.hero}>
       {isMobile ? (
         <div className={styles.heroContainer}>
+          <button className={`${styles.navButton} ${styles.prevButton}`} onClick={handlePrev}>
+            <FaChevronLeft />
+          </button>
+          <button className={`${styles.navButton} ${styles.nextButton}`} onClick={handleNext}>
+            <FaChevronRight />
+          </button>
           <AnimatePresence mode="wait">
             {currentSlide === 0 && (
               <motion.div 
@@ -111,6 +147,12 @@ const HeroBanner = () => {
             </div>
 
             <div className={styles.rightMediaContainer}>
+              <button className={`${styles.navButton} ${styles.prevButton}`} onClick={handlePrev}>
+                <FaChevronLeft />
+              </button>
+              <button className={`${styles.navButton} ${styles.nextButton}`} onClick={handleNext}>
+                <FaChevronRight />
+              </button>
               <AnimatePresence mode="wait">
                 <motion.div 
                   key={`desktopImg-${desktopImageIndex}`}

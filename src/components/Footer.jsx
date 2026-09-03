@@ -30,11 +30,10 @@ const Footer = () => {
         <div className="col-12 col-sm-6 col-md-6 col-lg-3">
           <h3 className={styles.heading}>Categories</h3>
           <nav className={styles.nav}>
+            <NavLink to="/shop?category=Sets" className={styles.link}>Sets</NavLink>
+            <NavLink to="/shop?category=Pendants" className={styles.link}>Pendants</NavLink>
             <NavLink to="/shop?category=Earrings" className={styles.link}>Earrings</NavLink>
-            <NavLink to="/shop?category=Necklaces" className={styles.link}>Necklaces</NavLink>
-            <NavLink to="/shop?category=Bracelets" className={styles.link}>Bracelets</NavLink>
-            <NavLink to="/shop?category=Rings" className={styles.link}>Rings</NavLink>
-            <NavLink to="/shop?category=Anklets" className={styles.link}>Anklets</NavLink>
+            <NavLink to="/shop?category=Fabric" className={styles.link}>Fabric</NavLink>
           </nav>
         </div>
 

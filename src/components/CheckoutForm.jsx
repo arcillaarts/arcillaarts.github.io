@@ -14,9 +14,9 @@ export default function CheckoutForm({ onClose, onBack }) {
   
   let deliveryCharge = 0;
   if (selectedDelivery === 'Standard') {
-    deliveryCharge = subtotal >= 499 ? 0 : 50;
+    deliveryCharge = subtotal >= 499 ? 0 : 59;
   } else {
-    deliveryCharge = 79;
+    deliveryCharge = 89;
   }
 
   const grandTotal = subtotal + deliveryCharge;
@@ -87,7 +87,7 @@ export default function CheckoutForm({ onClose, onBack }) {
             </label>
             <label className={styles.radioLabel}>
               <input type="radio" name="delivery" value="Express" checked={selectedDelivery === 'Express'} onChange={() => setSelectedDelivery('Express')} />
-              Express (₹79)
+              Express (₹89)
             </label>
           </div>
 

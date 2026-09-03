@@ -1,8 +1,8 @@
 export const categories = ['All', 'Sets', 'Pendants', 'Earrings', 'Fabric'];
 
 export const deliveryOptions = [
-  { id: 'standard', name: 'Standard Delivery', duration: '5-7 days', price: 0, freeAbove: 499 },
-  { id: 'express', name: 'Express Delivery', duration: '2-3 days', price: 79, freeAbove: null }
+  { id: 'standard', name: 'Standard Delivery', duration: '5-7 days', price: 59, freeAbove: 499 },
+  { id: 'express', name: 'Express Delivery', duration: '2-3 days', price: 89, freeAbove: null }
 ];
 
 const rawData = [

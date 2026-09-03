@@ -45,76 +45,106 @@ const HeroBanner = () => {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.heroContainer}>
-        {/* DESKTOP LEFT MEDIA */}
-        {!isMobile && (
-          <div className={styles.leftMedia}>
-            <video src="/cover/Cover1.mp4" autoPlay loop muted playsInline className={styles.mediaElement} />
-          </div>
-        )}
-
-        {/* DESKTOP OR MOBILE LOGO (Slide 0 on mobile) */}
-        <AnimatePresence mode="wait">
-          {(!isMobile || currentSlide === 0) && (
-            <motion.div 
-              key="content"
-              className={styles.content}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.8 }}
-            >
-              <motion.div variants={itemVariants}>
-                <img src="/logo.png" alt="Arcilla Arts Logo" className={styles.heroLogo} />
+      {isMobile ? (
+        <div className={styles.heroContainer}>
+          <AnimatePresence mode="wait">
+            {currentSlide === 0 && (
+              <motion.div 
+                key="content"
+                className={styles.content}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.8 }}
+              >
+                <motion.div variants={itemVariants}>
+                  <img src="/logo.png" alt="Arcilla Arts Logo" className={styles.heroLogo} />
+                </motion.div>
+                <motion.p className={styles.tagline} variants={itemVariants}>
+                  Handcrafted Jewellery, Made with Love
+                </motion.p>
+                <motion.div variants={itemVariants}>
+                  <NavLink to="/shop" className={styles.ctaButton}>Shop Now</NavLink>
+                </motion.div>
               </motion.div>
-              <motion.p className={styles.tagline} variants={itemVariants}>
-                Handcrafted Jewellery, Made with Love
-              </motion.p>
-              <motion.div variants={itemVariants}>
-                <NavLink to="/shop" className={styles.ctaButton}>Shop Now</NavLink>
+            )}
+            {currentSlide === 1 && (
+              <motion.div 
+                key="mobileVideo"
+                className={styles.mobileMedia}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <video src="/cover/Cover1.mp4" autoPlay loop muted playsInline className={styles.mediaElement} />
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* MOBILE VIDEO (Slide 1 on mobile) */}
-        <AnimatePresence>
-          {(isMobile && currentSlide === 1) && (
-            <motion.div 
-              key="mobileVideo"
-              className={styles.mobileMedia}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            )}
+            {currentSlide >= 2 && (
+              <motion.div 
+                key={`mobileImg-${currentSlide}`}
+                className={styles.mobileMedia}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <img
+                  src={rightImages[currentSlide - 2]}
+                  className={styles.mediaElement}
+                  alt="Showcase"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      ) : (
+        <div className={styles.desktopContainer}>
+          <div className={styles.mediaRow}>
+            <div className={styles.leftMedia}>
               <video src="/cover/Cover1.mp4" autoPlay loop muted playsInline className={styles.mediaElement} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+            
+            <div className={styles.logoWrapper}>
+              <img src="/logo.png" alt="Arcilla Arts Logo" className={styles.heroLogo} />
+            </div>
 
-        {/* DESKTOP RIGHT MEDIA OR MOBILE IMAGES (Slides 2+ on mobile) */}
-        <AnimatePresence mode="wait">
-          {(!isMobile || currentSlide >= 2) && (
-            <motion.div 
-              key={!isMobile ? "desktopRight" : `mobileImg-${currentSlide}`}
-              className={isMobile ? styles.mobileMedia : styles.rightMedia}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <img
-                src={rightImages[isMobile ? currentSlide - 2 : desktopImageIndex]}
-                className={styles.mediaElement}
-                alt="Showcase"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            <div className={styles.rightMediaContainer}>
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={`desktopImg-${desktopImageIndex}`}
+                  className={styles.rightMedia}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <img
+                    src={rightImages[desktopImageIndex]}
+                    className={styles.mediaElement}
+                    alt="Showcase"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
 
-      </div>
+          <motion.div 
+            className={styles.textRow}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.p className={styles.tagline} variants={itemVariants}>
+              Handcrafted Jewellery, Made with Love
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <NavLink to="/shop" className={styles.ctaButton}>Shop Now</NavLink>
+            </motion.div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };

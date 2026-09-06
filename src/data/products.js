@@ -37,9 +37,9 @@ const rawData = [
   { id: 29, name: "Peacock Red Clay Earring", price: 45 },
   { id: 30, name: "Sunflower Terracotta Locket & Earring", price: 170 },
   { id: 31, name: "Floral Clay Locket & Earring", price: 170 },
-  { id: 32, name: "Dried Pink Flower Resin Pendant", price: 250, outOfStock: true },
-  { id: 33, name: "Real Fern Leaf Resin Earrings", price: 300, outOfStock: true },
-  { id: 34, name: "Wildflower Clear Resin Ring", price: 350, outOfStock: true }
+  { id: 32, name: "Dried Pink Flower Resin Pendant (customisable to any desired design)", price: 250, outOfStock: true },
+  { id: 33, name: "Real Fern Leaf Resin Earrings (customisable to any desired design)", price: 300, outOfStock: true },
+  { id: 34, name: "Wildflower Clear Resin Ring (customisable to any desired design)", price: 350, outOfStock: true }
 ];
 
 const determineCategory = (name) => {

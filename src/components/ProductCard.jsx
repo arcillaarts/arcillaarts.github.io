@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import ShareButtons from './ShareButtons';
+import NotifyModal from './NotifyModal';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 import styles from './ProductCard.module.css';
@@ -9,6 +10,7 @@ import styles from './ProductCard.module.css';
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const { dispatch } = useCart();
+  const [isNotifyOpen, setIsNotifyOpen] = useState(false);
 
   const handleCardClick = () => {
     navigate(`/product/${product.id}`);
@@ -17,7 +19,7 @@ export default function ProductCard({ product }) {
   const handleAddToCart = (e) => {
     e.stopPropagation();
     if (product.outOfStock) {
-      toast('We will notify you when this is back in stock!', { icon: '🔔' });
+      setIsNotifyOpen(true);
     } else {
       dispatch({ type: 'ADD_ITEM', payload: product });
       toast.success(`${product.name} added to cart`);
@@ -64,6 +66,12 @@ export default function ProductCard({ product }) {
           <ShareButtons url={`${window.location.origin}/#/product/${product.id}`} title={product.name} />
         </div>
       </motion.div>
+
+      <NotifyModal 
+        isOpen={isNotifyOpen} 
+        onClose={() => setIsNotifyOpen(false)} 
+        product={product} 
+      />
     </div>
   );
 }

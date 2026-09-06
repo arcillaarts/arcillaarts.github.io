@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
@@ -7,12 +7,14 @@ import { deliveryOptions } from '../data/products';
 import { useCart } from '../context/CartContext';
 import ProductCard from '../components/ProductCard';
 import ShareButtons from '../components/ShareButtons';
+import NotifyModal from '../components/NotifyModal';
 import SEO from '../components/SEO';
 import styles from './ProductDetail.module.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { dispatch } = useCart();
+  const [isNotifyOpen, setIsNotifyOpen] = useState(false);
   
   const product = products.find(p => p.id === parseInt(id));
 
@@ -36,7 +38,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (product.outOfStock) {
-      toast('We will notify you when this is back in stock!', { icon: '🔔' });
+      setIsNotifyOpen(true);
     } else {
       dispatch({ type: 'ADD_ITEM', payload: product });
       toast.success(`${product.name} added to cart!`);
@@ -108,6 +110,12 @@ const ProductDetail = () => {
           ))}
         </div>
       </div>
+
+      <NotifyModal 
+        isOpen={isNotifyOpen} 
+        onClose={() => setIsNotifyOpen(false)} 
+        product={product} 
+      />
     </motion.div>
   );
 };

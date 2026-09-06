@@ -6,6 +6,7 @@ import styles from './NotifyModal.module.css';
 
 const NotifyModal = ({ isOpen, onClose, product }) => {
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [design, setDesign] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -13,7 +14,7 @@ const NotifyModal = ({ isOpen, onClose, product }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !design) {
+    if (!email || !phone || !design) {
       toast.error('Please fill in all fields');
       return;
     }
@@ -24,7 +25,7 @@ const NotifyModal = ({ isOpen, onClose, product }) => {
       await sendContactEmail({
         name: `Custom Request: ${product.name}`,
         email: email,
-        phone: 'N/A', // Not needed for this
+        phone: phone, 
         message: `Desired Design:\n${design}\n\n* Note: Customer was instructed to send reference images separately if they have any.`
       });
       toast.success('Your request has been sent! We will contact you soon.');
@@ -61,6 +62,16 @@ const NotifyModal = ({ isOpen, onClose, product }) => {
                 value={email} 
                 onChange={e => setEmail(e.target.value)} 
                 placeholder="Enter your email"
+              />
+            </div>
+            <div className={styles.field}>
+              <label>Phone Number</label>
+              <input 
+                type="tel" 
+                required 
+                value={phone} 
+                onChange={e => setPhone(e.target.value)} 
+                placeholder="Enter your contact number"
               />
             </div>
             <div className={styles.field}>

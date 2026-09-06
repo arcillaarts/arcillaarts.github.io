@@ -145,3 +145,16 @@
     font-size: 2rem;
   }
 }
+
+.outOfStock {
+  background: var(--color-dark);
+  margin-left: 0.5rem;
+}
+
+.notifyBtn {
+  background: var(--color-dark);
+}
+
+.notifyBtn:hover {
+  background: #333;
+}

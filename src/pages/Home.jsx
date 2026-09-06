@@ -11,7 +11,8 @@ const categories = [
   { name: 'Sets', color: 'linear-gradient(135deg, #E6D5C3, #B65F45)' },
   { name: 'Pendants', color: 'linear-gradient(135deg, #F3E9DD, #8A5140)' },
   { name: 'Earrings', color: 'linear-gradient(135deg, #F5EFE5, #D8C2A5)' },
-  { name: 'Fabric', color: 'linear-gradient(135deg, #EAD7C6, #D8C2A5)' }
+  { name: 'Fabric', color: 'linear-gradient(135deg, #EAD7C6, #D8C2A5)' },
+  { name: 'Resin', color: 'linear-gradient(135deg, #E5D5CB, #B65F45)' }
 ];
 
 const features = [

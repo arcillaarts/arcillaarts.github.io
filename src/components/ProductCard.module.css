@@ -75,3 +75,15 @@
   display: flex;
   justify-content: center;
 }
+
+.outOfStockBadge {
+  background: var(--color-dark);
+}
+
+.notifyButton {
+  background: var(--color-dark);
+}
+
+.notifyButton:hover {
+  background: #333;
+}

@@ -35,8 +35,12 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    dispatch({ type: 'ADD_ITEM', payload: product });
-    toast.success(`${product.name} added to cart!`);
+    if (product.outOfStock) {
+      toast('We will notify you when this is back in stock!', { icon: '🔔' });
+    } else {
+      dispatch({ type: 'ADD_ITEM', payload: product });
+      toast.success(`${product.name} added to cart!`);
+    }
   };
 
   return (
@@ -64,6 +68,7 @@ const ProductDetail = () => {
 
         <div>
           <span className={styles.category}>{product.category}</span>
+          {product.outOfStock && <span className={`${styles.category} ${styles.outOfStock}`}>Out of Stock</span>}
           <h1 className={styles.name}>{product.name}</h1>
           <div className={styles.price}>₹{product.price.toLocaleString('en-IN')}</div>
           
@@ -84,8 +89,11 @@ const ProductDetail = () => {
             ))}
           </div>
 
-          <button onClick={handleAddToCart} className={styles.addToCartBtn}>
-            Add to Cart
+          <button 
+            onClick={handleAddToCart} 
+            className={`${styles.addToCartBtn} ${product.outOfStock ? styles.notifyBtn : ''}`}
+          >
+            {product.outOfStock ? 'Notify Me' : 'Add to Cart'}
           </button>
 
           <ShareButtons title={product.name} url={window.location.href} />

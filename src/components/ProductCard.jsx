@@ -16,8 +16,12 @@ export default function ProductCard({ product }) {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    dispatch({ type: 'ADD_ITEM', payload: product });
-    toast.success(`${product.name} added to cart`);
+    if (product.outOfStock) {
+      toast('We will notify you when this is back in stock!', { icon: '🔔' });
+    } else {
+      dispatch({ type: 'ADD_ITEM', payload: product });
+      toast.success(`${product.name} added to cart`);
+    }
   };
 
   const handleShareClick = (e) => {
@@ -40,13 +44,20 @@ export default function ProductCard({ product }) {
             className={styles.image}
             loading="lazy"
           />
-          <span className={styles.badge}>{product.category}</span>
+          {product.outOfStock ? (
+            <span className={`${styles.badge} ${styles.outOfStockBadge}`}>Out of Stock</span>
+          ) : (
+            <span className={styles.badge}>{product.category}</span>
+          )}
         </div>
         <div className={styles.content}>
           <h3 className={styles.name}>{product.name}</h3>
           <p className={styles.price}>₹{product.price.toLocaleString('en-IN')}</p>
-          <button className={styles.addButton} onClick={handleAddToCart}>
-            Add to Cart
+          <button 
+            className={`${styles.addButton} ${product.outOfStock ? styles.notifyButton : ''}`} 
+            onClick={handleAddToCart}
+          >
+            {product.outOfStock ? 'Notify Me' : 'Add to Cart'}
           </button>
         </div>
         <div className={styles.shareRow} onClick={handleShareClick}>

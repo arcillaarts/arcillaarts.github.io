@@ -1,4 +1,4 @@
-export const categories = ['All', 'Sets', 'Pendants', 'Earrings', 'Fabric'];
+export const categories = ['All', 'Sets', 'Pendants', 'Earrings', 'Fabric', 'Resin'];
 
 export const deliveryOptions = [
   { id: 'standard', name: 'Standard Delivery', duration: '5-7 days', price: 59, freeAbove: 499 },
@@ -36,11 +36,15 @@ const rawData = [
   { id: 28, name: "Bird Green Clay Earring", price: 45 },
   { id: 29, name: "Peacock Red Clay Earring", price: 45 },
   { id: 30, name: "Sunflower Terracotta Locket & Earring", price: 170 },
-  { id: 31, name: "Floral Clay Locket & Earring", price: 170 }
+  { id: 31, name: "Floral Clay Locket & Earring", price: 170 },
+  { id: 32, name: "Dried Pink Flower Resin Pendant", price: 250, outOfStock: true },
+  { id: 33, name: "Real Fern Leaf Resin Earrings", price: 300, outOfStock: true },
+  { id: 34, name: "Wildflower Clear Resin Ring", price: 350, outOfStock: true }
 ];
 
 const determineCategory = (name) => {
   const lowerName = name.toLowerCase();
+  if (lowerName.includes('resin')) return 'Resin';
   if (lowerName.includes('fabric')) return 'Fabric';
   if (lowerName.includes('earring') && !lowerName.includes('locket')) return 'Earrings';
   if (lowerName.includes('locket & earring') || lowerName.includes('set')) return 'Sets';
@@ -55,11 +59,11 @@ const products = rawData.map(item => {
   const colors = colorKeywords.filter(color => lowerName.includes(color));
   
   // Materials
-  const materialKeywords = ['clay', 'fabric', 'bamboo', 'terracotta'];
+  const materialKeywords = ['clay', 'fabric', 'bamboo', 'terracotta', 'resin'];
   const materials = materialKeywords.filter(mat => lowerName.includes(mat));
   
   // Types
-  const typeKeywords = ['locket', 'earring', 'pendant', 'set'];
+  const typeKeywords = ['locket', 'earring', 'pendant', 'set', 'ring'];
   const types = typeKeywords.filter(type => lowerName.includes(type));
   if (lowerName.includes('locket & earring')) types.push('set');
 

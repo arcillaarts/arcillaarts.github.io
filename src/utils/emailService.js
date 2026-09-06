@@ -46,11 +46,13 @@ export const sendContactEmail = async ({ name, email, phone, message }) => {
     throw new Error("Contact template ID is missing");
   }
 
+  const combinedMessage = `Customer Name: ${name}\nCustomer Email: ${email}\nCustomer Phone: ${phone}\n\nMessage/Details:\n${message}`;
+
   const templateParams = {
     from_name: name,
     from_email: email,
     from_phone: phone,
-    message: message,
+    message: combinedMessage,
     to_email: 'info.arcillaarts@gmail.com'
   };
 

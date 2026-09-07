@@ -32,8 +32,8 @@ const About = () => {
                 We bring together timeless techniques and contemporary designs to create jewelry that speaks to the modern soul.
               </p>
             </div>
-            <div className={styles.imageBlock} style={{ background: 'linear-gradient(135deg, #D8C2A5, #8A5140)' }}>
-              {/* Decorative image placeholder */}
+            <div className={styles.imageBlock} style={{ background: '#EDE1D6' }}>
+              <img src="/footer-logo.jpg" alt="Arcilla Arts Logo" className={styles.sectionImage} style={{ objectFit: 'contain', padding: '2rem' }} />
             </div>
           </div>
         </section>
@@ -50,8 +50,8 @@ const About = () => {
                 Her vision is to create pieces that are not just accessories, but intimate expressions of personal style and cultural pride.
               </p>
             </div>
-            <div className={styles.imageBlock} style={{ background: 'linear-gradient(135deg, #B65F45, #F5EFE5)' }}>
-              {/* Decorative image placeholder */}
+            <div className={styles.imageBlock}>
+              <img src="/Bidisha.jpg" alt="Bidisha - Founder of Arcilla Arts" className={styles.sectionImage} />
             </div>
           </div>
         </section>

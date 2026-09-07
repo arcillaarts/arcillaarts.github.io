@@ -153,10 +153,6 @@
   .valuesGrid {
     grid-template-columns: 1fr;
   }
-  
-  .imageBlock {
-    aspect-ratio: 16/9;
-  }
 }
 
 @media (max-width: 480px) {

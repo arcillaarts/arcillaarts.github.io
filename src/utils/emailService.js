@@ -9,18 +9,22 @@ if (PUBLIC_KEY) {
   emailjs.init(PUBLIC_KEY);
 }
 
-export const sendOrderEmail = async ({ name, email, phone, cart, total, deliveryCharge = 0, utr }) => {
+export const sendOrderEmail = async ({ name, email, phone, address, cart, total, deliveryCharge = 0, utr }) => {
   const grandTotal = total + deliveryCharge;
 
   const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
 
   let itemsText = cart.map(item => `${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}`).join('\n');
+  itemsText += `\n\nDelivery Address:\n${address}`;
+
   let itemsHtml = cart.map(item => `<li>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</li>`).join('');
+  itemsHtml += `<br><b>Delivery Address:</b><br>${address}`;
 
   const templateParams = {
     customer_name: name,
     customer_email: email,
     customer_phone: phone,
+    customer_address: address,
     items_list: itemsText,
     items_html: `<ul>${itemsHtml}</ul>`,
     order_total: `₹${grandTotal}`,

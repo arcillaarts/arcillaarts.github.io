@@ -7,7 +7,7 @@ import styles from './CheckoutForm.module.css';
 
 export default function CheckoutForm({ onClose, onBack }) {
   const { cart, dispatch, cartTotal: subtotal } = useCart();
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', address: '' });
   const [selectedDelivery, setSelectedDelivery] = useState('Standard');
   const [loading, setLoading] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -23,7 +23,7 @@ export default function CheckoutForm({ onClose, onBack }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.email) {
+    if (!formData.name || !formData.phone || !formData.email || !formData.address) {
       toast.error('Please fill all details');
       return;
     }
@@ -69,6 +69,17 @@ export default function CheckoutForm({ onClose, onBack }) {
         <div className={styles.field}>
           <label className={styles.label}>Email</label>
           <input className={styles.input} type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label}>Delivery Address</label>
+          <textarea 
+            className={styles.input} 
+            required 
+            rows="3" 
+            value={formData.address} 
+            onChange={e => setFormData({...formData, address: e.target.value})}
+            placeholder="House number, street, city, pin code..."
+          />
         </div>
 
         <div className={styles.summary}>

@@ -20,7 +20,7 @@ const About = () => {
         <h1 className={styles.title}>About Arcilla Arts</h1>
         
         <section className={styles.section}>
-          <div className={styles.contentGrid}>
+          <div className={`${styles.contentGrid} ${styles.reverse}`}>
             <div className={styles.textBlock}>
               <h2 className={styles.subtitle}>Our Story</h2>
               <p>
@@ -39,7 +39,7 @@ const About = () => {
         </section>
 
         <section className={styles.section}>
-          <div className={`${styles.contentGrid} ${styles.reverse}`}>
+          <div className={styles.contentGrid}>
             <div className={styles.textBlock}>
               <h2 className={styles.subtitle}>Meet Bidisha</h2>
               <p>
